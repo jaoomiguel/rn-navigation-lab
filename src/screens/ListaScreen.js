@@ -1,12 +1,17 @@
-// TODO: estilizar esta tela com as cores e identidade visual do seu tema
+// Tela de lista de jogos salvos
 
 import { useState } from "react";
-import { FlatList, SafeAreaView, StyleSheet, Text, View } from "react-native";
-// TODO: apos criar o componente CardJogo, importe-o aqui:
-// import { CardJogo } from '../components';
+import {
+  FlatList,
+  SafeAreaView,
+  StyleSheet,
+  Text,
+  View,
+} from "react-native";
 
-// Dados de exemplo para voce visualizar o renderItem funcionando
-// Em um app real, esses itens chegariam via route.params enviados pela DetalheScreen
+// Importando o componente reutilizavel
+import { CardJogo } from "../components";
+
 const jogosMock = [
   {
     id: "1",
@@ -14,6 +19,13 @@ const jogosMock = [
     genero: "Aventura / Mundo Aberto",
     plataforma: "Nintendo Switch",
     nota: "10/10",
+  },
+  {
+    id: "2",
+    titulo: "Cyberpunk 2077",
+    genero: "RPG / Mundo Aberto",
+    plataforma: "PS5 / PC / Xbox",
+    nota: "9/10",
   },
   {
     id: "3",
@@ -27,112 +39,126 @@ const jogosMock = [
 export default function ListaScreen({ route }) {
   const [itensSalvos, setItensSalvos] = useState(jogosMock);
 
-  // Para receber um jogo salvo da DetalheScreen via route.params:
-  // if (route.params?.novoJogo) {
-  //   setItensSalvos(prev => [...prev, route.params.novoJogo]);
-  // }
-
   return (
     <SafeAreaView style={styles.container}>
       <View style={styles.header}>
-        {/* TODO: renomeie o titulo para o seu tema */}
-        <Text style={styles.headerTitulo}>Minha Lista</Text>
+        <Text style={styles.headerTitulo}>
+          Game Vault
+        </Text>
       </View>
 
       <FlatList
         data={itensSalvos}
         keyExtractor={(item) => item.id.toString()}
         renderItem={({ item }) => (
-          // TODO: crie o arquivo src/components/CardJogo.js
-          // O componente CardJogo deve receber as props: titulo, genero, plataforma e nota
-          // Depois substitua este bloco por:
-          // <CardJogo titulo={item.titulo} genero={item.genero} plataforma={item.plataforma} nota={item.nota} />
-          <View style={styles.card} />
+          <CardJogo
+            titulo={item.titulo}
+            genero={item.genero}
+            plataforma={item.plataforma}
+            nota={item.nota}
+          />
         )}
         ListEmptyComponent={
           <View style={styles.conteudo}>
             <View style={styles.iconeContainer}>
-              {/* TODO: troque pela inicial do seu tema */}
-              <Text style={styles.icone}>G</Text>
+              <Text style={styles.icone}>🎮</Text>
             </View>
-            <Text style={styles.titulo}>Nenhum jogo salvo</Text>
-            <Text style={styles.descricao}>Sua lista aparecera aqui</Text>
+
+            <Text style={styles.titulo}>
+              Nenhum jogo salvo
+            </Text>
+
+            <Text style={styles.descricao}>
+              Sua biblioteca gamer esta vazia
+            </Text>
+
             <Text style={styles.dica}>
-              Acesse um jogo e toque em "Adicionar a Lista" para salva-lo aqui.
+              Acesse um jogo e toque em
+              "Adicionar a Lista" para salvar.
             </Text>
           </View>
         }
-        contentContainerStyle={itensSalvos.length === 0 && styles.listaVazia}
+        contentContainerStyle={
+          itensSalvos.length === 0 &&
+          styles.listaVazia
+        }
       />
     </SafeAreaView>
   );
 }
 
-// TODO: ajuste as cores para o tema do seu app
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#F5F5F5",
+    backgroundColor: "#0F0F1A",
   },
+
   header: {
-    backgroundColor: "#333333",
+    backgroundColor: "#6C3BFF",
     paddingHorizontal: 20,
     paddingTop: 20,
     paddingBottom: 24,
+
+    borderBottomLeftRadius: 20,
+    borderBottomRightRadius: 20,
   },
+
   headerTitulo: {
-    fontSize: 26,
+    fontSize: 28,
     fontWeight: "bold",
     color: "#FFFFFF",
   },
+
   listaVazia: {
     flex: 1,
   },
+
   conteudo: {
     flex: 1,
     alignItems: "center",
     justifyContent: "center",
     paddingHorizontal: 32,
   },
+
   iconeContainer: {
-    width: 96,
-    height: 96,
-    borderRadius: 48,
-    backgroundColor: "#E0E0E0",
+    width: 100,
+    height: 100,
+    borderRadius: 50,
+    backgroundColor: "#1E1E2E",
+
     alignItems: "center",
     justifyContent: "center",
+
     marginBottom: 20,
+
+    borderWidth: 2,
+    borderColor: "#6C3BFF",
   },
+
   icone: {
-    fontSize: 40,
-    fontWeight: "bold",
-    color: "#555555",
+    fontSize: 42,
   },
+
   titulo: {
-    fontSize: 20,
+    fontSize: 22,
     fontWeight: "bold",
-    color: "#1A1A1A",
+    color: "#FFFFFF",
     marginBottom: 8,
     textAlign: "center",
   },
+
   descricao: {
     fontSize: 16,
-    color: "#555555",
+    color: "#CFCFCF",
     fontWeight: "600",
     textAlign: "center",
     marginBottom: 12,
   },
+
   dica: {
-    fontSize: 13,
-    color: "#888888",
+    fontSize: 14,
+    color: "#9E9E9E",
     textAlign: "center",
-    lineHeight: 20,
-  },
-  card: {
-    backgroundColor: "#FFFFFF",
-    marginHorizontal: 16,
-    marginTop: 12,
-    borderRadius: 8,
-    padding: 16,
+    lineHeight: 22,
   },
 });

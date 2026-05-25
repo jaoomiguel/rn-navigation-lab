@@ -1,4 +1,5 @@
-// TODO: escolher um tema e personalizar os dados e estilizacao desta tela
+// Tela de perfil gamer
+
 import {
   SafeAreaView,
   StyleSheet,
@@ -11,130 +12,190 @@ export default function PerfilScreen() {
   return (
     <SafeAreaView style={styles.container}>
       <View style={styles.header}>
-        <Text style={styles.headerTitulo}>Perfil</Text>
+        <Text style={styles.headerTitulo}>
+          Gamer Profile
+        </Text>
       </View>
 
       <View style={styles.cartao}>
-        {/* TODO: personalizar o avatar com a inicial do nome do usuario */}
         <View style={styles.avatar}>
-          <Text style={styles.avatarTexto}>U</Text>
+          <Text style={styles.avatarTexto}>J</Text>
         </View>
-        {/* TODO: personalizar nome e e-mail */}
-        <Text style={styles.nome}>Nome do Usuario</Text>
-        <Text style={styles.email}>usuario@email.com</Text>
+
+        <Text style={styles.nome}>
+          João Miguel
+        </Text>
+
+        <Text style={styles.email}>
+          player@gamemail.com
+        </Text>
 
         <View style={styles.separador} />
 
-        {/* TODO: substituir pelas estatisticas que fazem sentido no seu tema */}
         <View style={styles.infoLinha}>
-          <Text style={styles.infoLabel}>Itens salvos</Text>
-          <Text style={styles.infoValor}>0</Text>
+          <Text style={styles.infoLabel}>
+            Jogos salvos
+          </Text>
+
+          <Text style={styles.infoValor}>
+            12
+          </Text>
         </View>
+
         <View style={styles.infoLinha}>
-          <Text style={styles.infoLabel}>Itens favoritos</Text>
-          <Text style={styles.infoValor}>0</Text>
+          <Text style={styles.infoLabel}>
+            Jogos favoritos
+          </Text>
+
+          <Text style={styles.infoValor}>
+            5
+          </Text>
         </View>
+
         <View style={styles.infoLinha}>
-          <Text style={styles.infoLabel}>Membro desde</Text>
-          <Text style={styles.infoValor}>Maio 2026</Text>
+          <Text style={styles.infoLabel}>
+            Player desde
+          </Text>
+
+          <Text style={styles.infoValor}>
+            Maio 2026
+          </Text>
         </View>
       </View>
 
-      {/* TODO: mudar o texto do botao para o contexto do seu tema */}
       <TouchableOpacity style={styles.botao}>
-        <Text style={styles.botaoTexto}>Editar perfil</Text>
+        <Text style={styles.botaoTexto}>
+          Editar Gamer Tag
+        </Text>
       </TouchableOpacity>
     </SafeAreaView>
   );
 }
 
-// TODO: estilizar com as cores e identidade visual do seu tema
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#F5F5F5",
+    backgroundColor: "#0F0F1A",
   },
+
   header: {
-    backgroundColor: "#333333",
+    backgroundColor: "#6C3BFF",
     paddingHorizontal: 20,
     paddingTop: 20,
     paddingBottom: 24,
+
+    borderBottomLeftRadius: 20,
+    borderBottomRightRadius: 20,
   },
+
   headerTitulo: {
-    fontSize: 26,
+    fontSize: 28,
     fontWeight: "bold",
     color: "#FFFFFF",
   },
+
   cartao: {
     margin: 16,
-    backgroundColor: "#FFFFFF",
-    borderRadius: 16,
+    backgroundColor: "#1E1E2E",
+    borderRadius: 20,
     padding: 24,
     alignItems: "center",
-    shadowColor: "#000",
-    shadowOffset: { width: 0, height: 2 },
-    shadowOpacity: 0.08,
+
+    borderWidth: 1,
+    borderColor: "#6C3BFF",
+
+    shadowColor: "#6C3BFF",
+    shadowOffset: {
+      width: 0,
+      height: 4,
+    },
+    shadowOpacity: 0.3,
     shadowRadius: 8,
-    elevation: 4,
+
+    elevation: 6,
   },
+
   avatar: {
-    width: 88,
-    height: 88,
-    borderRadius: 44,
-    backgroundColor: "#E0E0E0",
+    width: 90,
+    height: 90,
+    borderRadius: 45,
+    backgroundColor: "#6C3BFF",
+
     alignItems: "center",
     justifyContent: "center",
+
     borderWidth: 3,
-    borderColor: "#AAAAAA",
+    borderColor: "#00E5FF",
+
     marginBottom: 16,
   },
+
   avatarTexto: {
-    fontSize: 36,
+    fontSize: 38,
     fontWeight: "bold",
-    color: "#555555",
+    color: "#FFFFFF",
   },
+
   nome: {
-    fontSize: 22,
+    fontSize: 24,
     fontWeight: "bold",
-    color: "#1A1A1A",
+    color: "#FFFFFF",
     marginBottom: 4,
   },
+
   email: {
     fontSize: 14,
-    color: "#888888",
+    color: "#B0B0B0",
     marginBottom: 20,
   },
+
   separador: {
     width: "100%",
     height: 1,
-    backgroundColor: "#F0F0F0",
+    backgroundColor: "#2D2D44",
     marginBottom: 16,
   },
+
   infoLinha: {
     flexDirection: "row",
     justifyContent: "space-between",
     width: "100%",
-    paddingVertical: 8,
+    paddingVertical: 10,
   },
+
   infoLabel: {
-    fontSize: 14,
-    color: "#555555",
+    fontSize: 15,
+    color: "#CFCFCF",
   },
+
   infoValor: {
-    fontSize: 14,
-    fontWeight: "600",
-    color: "#333333",
+    fontSize: 15,
+    fontWeight: "bold",
+    color: "#00E5FF",
   },
+
   botao: {
     marginHorizontal: 16,
-    backgroundColor: "#333333",
-    borderRadius: 12,
+    backgroundColor: "#6C3BFF",
+    borderRadius: 14,
     paddingVertical: 14,
     alignItems: "center",
+
+    shadowColor: "#6C3BFF",
+    shadowOffset: {
+      width: 0,
+      height: 4,
+    },
+    shadowOpacity: 0.4,
+    shadowRadius: 6,
+
+    elevation: 6,
   },
+
   botaoTexto: {
     fontSize: 15,
     fontWeight: "bold",
     color: "#FFFFFF",
+    letterSpacing: 1,
   },
 });
